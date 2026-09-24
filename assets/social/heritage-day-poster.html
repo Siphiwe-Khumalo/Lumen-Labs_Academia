@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:#0B0C10; }
+
+  .poster {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Sora', sans-serif;
+    background:
+      radial-gradient(circle at 82% 92%, rgba(214,158,79,0.30) 0%, rgba(214,158,79,0.0) 42%),
+      radial-gradient(circle at 8% 6%, rgba(47,182,166,0.10) 0%, rgba(47,182,166,0.0) 38%),
+      linear-gradient(165deg, #0B0C10 0%, #12141B 38%, #1A1712 68%, #241A12 88%, #2B1B12 100%);
+  }
+
+  /* ---------- fine circuit grid texture (full bleed, very subtle) ---------- */
+  .grid-layer { position:absolute; inset:0; opacity:0.55; }
+
+  /* ---------- top emblem ---------- */
+  .brandmark {
+    position:absolute; top:72px; left:80px;
+    width:40px; height:40px;
+  }
+
+  .top-tag {
+    position:absolute; top:80px; right:80px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px; font-weight:500; letter-spacing:3px;
+    color:rgba(245,241,232,0.55);
+    text-transform:uppercase;
+  }
+
+  /* ---------- headline block ---------- */
+  .content {
+    position:absolute;
+    top: 400px;
+    left: 80px;
+    right: 80px;
+  }
+
+  .eyebrow {
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#3FD6C4;
+    margin-bottom:22px;
+  }
+
+  .eyebrow::before{
+    content:'';
+    display:inline-block;
+    width:26px; height:2px;
+    background:#3FD6C4;
+    margin-right:12px;
+    vertical-align:middle;
+  }
+
+  h1 {
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:76px;
+    line-height:1.04;
+    letter-spacing:-1.5px;
+    color:#F7F2E9;
+  }
+
+  h1 .flag-chip {
+    display:inline-block;
+    width:74px; height:50px;
+    vertical-align: 6px;
+    margin-left:16px;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow: 0 0 0 1.5px rgba(247,242,233,0.55), 0 6px 18px rgba(0,0,0,0.45);
+  }
+  h1 .flag-chip svg { display:block; width:100%; height:100%; }
+
+  .thread {
+    display:flex;
+    margin-top:34px;
+    margin-bottom:34px;
+    gap:5px;
+  }
+  .thread span {
+    display:block;
+    width:26px; height:4px;
+    border-radius:2px;
+  }
+
+  .subline {
+    font-family:'Sora', sans-serif;
+    font-size:33px;
+    line-height:1.5;
+    letter-spacing:-0.2px;
+  }
+  .subline .l1 { color:rgba(240,224,196,0.72); font-weight:300; display:block; }
+  .subline .l2 { color:#F0C878; font-weight:600; display:block; }
+
+  /* ---------- artwork band (heritage horizon + circuitry) ---------- */
+  .art { position:absolute; left:0; right:0; top:760px; height:590px; }
+
+  /* ---------- footer ---------- */
+  .footer {
+    position:absolute;
+    left:80px; right:80px; bottom:64px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  .footer-rule {
+    position:absolute;
+    left:80px; right:80px; bottom:126px;
+    height:1px;
+    background:linear-gradient(90deg, rgba(247,242,233,0.35), rgba(247,242,233,0.03));
+  }
+  .brand-name {
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:3px;
+    color:#F7F2E9;
+  }
+  .brand-tag {
+    font-family:'Sora', sans-serif;
+    font-weight:400;
+    font-size:15px;
+    letter-spacing:0.2px;
+    color:rgba(247,242,233,0.55);
+    margin-top:6px;
+  }
+  .footer-right {
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px;
+    letter-spacing:2px;
+    color:rgba(63,214,196,0.85);
+    text-transform:uppercase;
+    text-align:right;
+  }
+</style>
+</head>
+<body>
+<div class="poster" id="poster">
+
+  <!-- subtle full-bleed circuit grid -->
+  <svg class="grid-layer" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="circuit" width="120" height="120" patternUnits="userSpaceOnUse">
+        <path d="M0 60 H40 V20 H120" fill="none" stroke="rgba(247,242,233,0.05)" stroke-width="1"/>
+        <path d="M60 0 V40 H100 V120" fill="none" stroke="rgba(247,242,233,0.05)" stroke-width="1"/>
+        <circle cx="40" cy="20" r="2.4" fill="rgba(63,214,196,0.10)"/>
+        <circle cx="100" cy="40" r="2.4" fill="rgba(214,158,79,0.10)"/>
+      </pattern>
+    </defs>
+    <rect width="1080" height="760" fill="url(#circuit)"/>
+  </svg>
+
+  <!-- brand emblem -->
+  <svg class="brandmark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="20,3 35,20 20,37 5,20" fill="none" stroke="#F0C878" stroke-width="1.6"/>
+    <polygon points="20,11 28,20 20,29 12,20" fill="#3FD6C4" opacity="0.9"/>
+  </svg>
+  <div class="top-tag">24 · 09 · Heritage Day</div>
+
+  <!-- large faint concentric motif, referencing beadwork / sun symbolism, filling upper negative space -->
+  <svg style="position:absolute; top:-60px; right:-140px; width:620px; height:620px; opacity:0.5;" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="rgba(240,200,120,0.16)">
+      <circle cx="310" cy="310" r="290" stroke-width="1"/>
+      <circle cx="310" cy="310" r="240" stroke-width="1"/>
+      <circle cx="310" cy="310" r="190" stroke-width="1" stroke="rgba(63,214,196,0.13)"/>
+    </g>
+    <g fill="none" stroke="rgba(247,242,233,0.10)" stroke-width="1">
+      <path d="M310,20 L310,600"/>
+      <path d="M20,310 L600,310"/>
+      <path d="M92,92 L528,528"/>
+      <path d="M528,92 L92,528"/>
+    </g>
+    <g fill="rgba(240,200,120,0.20)">
+      <circle cx="310" cy="20" r="3"/>
+      <circle cx="310" cy="600" r="3"/>
+      <circle cx="20" cy="310" r="3"/>
+      <circle cx="600" cy="310" r="3"/>
+    </g>
+  </svg>
+
+  <div class="content">
+    <div class="eyebrow">Lumen Labs · South Africa</div>
+    <h1>HAPPY<br/>HERITAGE DAY<span class="flag-chip">
+      <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="za-a"><path fill-opacity=".7" d="M-71.9 0h682.7v512H-71.9z"/></clipPath>
+        </defs>
+        <g clip-path="url(#za-a)" transform="translate(67.4)scale(.93748)">
+          <g fill-rule="evenodd" stroke-width="1pt">
+            <path fill="#000001" d="M-71.9 407.8V104.4L154 256.1z"/>
+            <path fill="#000c8a" d="m82.2 512.1 253.6-170.6H696V512H82.2z"/>
+            <path fill="#e1392d" d="M66 0h630v170.8H335.7S69.3-1.7 66 0"/>
+            <path fill="#ffb915" d="M-71.9 64v40.4L154 256-72 407.8v40.3l284.5-192z"/>
+            <path fill="#007847" d="M-71.9 64V0h95l301.2 204h371.8v104.2H324.3L23 512h-94.9v-63.9l284.4-192L-71.8 64z"/>
+            <path fill="#fff" d="M23 0h59.2l253.6 170.7H696V204H324.3zm0 512.1h59.2l253.6-170.6H696v-33.2H324.3L23 512z"/>
+          </g>
+        </g>
+      </svg>
+    </span></h1>
+    <div class="thread">
+      <span style="background:#007A4D"></span>
+      <span style="background:#FFB612"></span>
+      <span style="background:#DE3831"></span>
+      <span style="background:#F7F2E9"></span>
+      <span style="background:#002395"></span>
+      <span style="background:#000000;border:1px solid rgba(247,242,233,0.3)"></span>
+    </div>
+    <div class="subline">
+      <span class="l1">Celebrating where we come from.</span>
+      <span class="l2">Building where we're going.</span>
+    </div>
+  </div>
+
+  <!-- heritage x technology artwork band -->
+  <svg class="art" viewBox="0 0 1080 590" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0B0C10" stop-opacity="0"/>
+        <stop offset="1" stop-color="#0B0C10" stop-opacity="0.0"/>
+      </linearGradient>
+      <linearGradient id="mtnGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3A2A18" stop-opacity="0.95"/>
+        <stop offset="1" stop-color="#120F0C" stop-opacity="0.98"/>
+      </linearGradient>
+      <linearGradient id="cityGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2A1E14" stop-opacity="0.95"/>
+        <stop offset="1" stop-color="#12100D" stop-opacity="0.98"/>
+      </linearGradient>
+      <linearGradient id="groundFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0B0C10" stop-opacity="0"/>
+        <stop offset="1" stop-color="#0B0C10" stop-opacity="1"/>
+      </linearGradient>
+      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#F0C878" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#F0C878" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- constellation / data-node sky -->
+    <g id="nodes" stroke="rgba(240,200,120,0.35)" stroke-width="1">
+      <line x1="120" y1="60" x2="200" y2="30"/>
+      <line x1="200" y1="30" x2="270" y2="80"/>
+      <line x1="430" y1="40" x2="500" y2="90"/>
+      <line x1="620" y1="20" x2="690" y2="70"/>
+      <line x1="690" y1="70" x2="760" y2="35"/>
+      <line x1="850" y1="55" x2="920" y2="95"/>
+      <line x1="300" y1="110" x2="380" y2="70"/>
+      <line x1="920" y1="95" x2="980" y2="50"/>
+    </g>
+    <g id="dots" fill="#F0C878">
+      <circle cx="120" cy="60" r="2.6"/>
+      <circle cx="200" cy="30" r="2.2"/>
+      <circle cx="270" cy="80" r="2.6"/>
+      <circle cx="430" cy="40" r="2.2"/>
+      <circle cx="500" cy="90" r="2.6"/>
+      <circle cx="620" cy="20" r="2.2"/>
+      <circle cx="690" cy="70" r="2.8" fill="#3FD6C4"/>
+      <circle cx="760" cy="35" r="2.2"/>
+      <circle cx="850" cy="55" r="2.6"/>
+      <circle cx="920" cy="95" r="2.2" fill="#3FD6C4"/>
+      <circle cx="980" cy="50" r="2.6"/>
+      <circle cx="300" cy="110" r="2.2"/>
+      <circle cx="380" cy="70" r="2.6"/>
+    </g>
+    <circle cx="860" cy="70" r="90" fill="url(#sunGlow)"/>
+
+    <!-- woven geometric heritage band (textile-inspired chevrons/diamonds) -->
+    <g transform="translate(0,150)">
+      <rect x="0" y="0" width="1080" height="54" fill="rgba(11,12,16,0.0)"/>
+      <g id="chevrons">
+        <!-- repeating diamond/chevron motif, alternating gold + teal outline -->
+      </g>
+    </g>
+
+    <!-- Table Mountain silhouette (flat-top plateau, abstracted) -->
+    <path d="M0,430
+             L110,430 L150,300 L190,300 L230,340
+             L270,270 L300,270 L330,310
+             L380,230 L470,230 L520,290
+             L560,290 L560,430 Z"
+          fill="url(#mtnGrad)"/>
+
+    <!-- modern skyline to the right, rising toward the future -->
+    <g id="city" fill="url(#cityGrad)">
+      <rect x="600" y="330" width="34" height="100"/>
+      <rect x="642" y="290" width="26" height="140"/>
+      <rect x="676" y="350" width="40" height="80"/>
+      <rect x="724" y="260" width="22" height="170"/>
+      <rect x="754" y="310" width="30" height="120"/>
+      <rect x="792" y="230" width="18" height="200"/>
+      <rect x="818" y="360" width="46" height="70"/>
+      <rect x="872" y="300" width="24" height="130"/>
+      <rect x="904" y="340" width="36" height="90"/>
+      <rect x="948" y="270" width="20" height="160"/>
+      <rect x="976" y="320" width="44" height="110"/>
+      <rect x="1028" y="300" width="30" height="130"/>
+    </g>
+    <!-- beacon / antenna referencing forward-looking tech, contained above rooflines -->
+    <line x1="792" y1="230" x2="792" y2="185" stroke="rgba(63,214,196,0.55)" stroke-width="1.4"/>
+    <circle cx="792" cy="185" r="3" fill="#3FD6C4"/>
+    <line x1="724" y1="260" x2="724" y2="222" stroke="rgba(240,200,120,0.45)" stroke-width="1.2"/>
+    <circle cx="724" cy="222" r="2.4" fill="#F0C878"/>
+
+    <!-- ground fade to black -->
+    <rect x="0" y="430" width="1080" height="160" fill="url(#groundFade)"/>
+
+    <!-- geometric heritage pattern seam sitting at the horizon line, above the fade -->
+    <g transform="translate(0,420)">
+      <g id="lattice"></g>
+    </g>
+  </svg>
+
+  <div class="footer-rule"></div>
+  <div class="footer">
+    <div>
+      <div class="brand-name">LUMEN LABS</div>
+      <div class="brand-tag">Building Ideas Into Technology.</div>
+    </div>
+    <div class="footer-right">#HeritageDay<br/>#SouthAfrica</div>
+  </div>
+
+</div>
+
+<script>
+  // programmatically build the diamond/chevron heritage lattice + pattern band
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  const chevronGroup = document.getElementById('chevrons');
+  const colors = ['#F0C878', '#3FD6C4'];
+  const w = 60;
+  for (let i = -1; i < 20; i++) {
+    const x = i * w;
+    const color = colors[i % 2 === 0 ? 0 : 1];
+    const path = el('path', {
+      d: `M${x},27 L${x+30},2 L${x+60},27 L${x+30},52 Z`,
+      fill: 'none',
+      stroke: color,
+      'stroke-width': '1.4',
+      opacity: '0.55'
+    });
+    chevronGroup.appendChild(path);
+    // small inner diamond, alternating fill for rhythm
+    if (i % 3 === 0) {
+      const inner = el('path', {
+        d: `M${x+30},14 L${x+42},27 L${x+30},40 L${x+18},27 Z`,
+        fill: color,
+        opacity: '0.28'
+      });
+      chevronGroup.appendChild(inner);
+    }
+  }
+
+  const lattice = document.getElementById('lattice');
+  const lw = 40;
+  for (let i = -1; i < 30; i++) {
+    const x = i * lw;
+    const c = (i % 2 === 0) ? 'rgba(240,200,120,0.30)' : 'rgba(63,214,196,0.22)';
+    lattice.appendChild(el('path', {
+      d: `M${x},10 L${x+20},0 L${x+40},10`,
+      fill: 'none', stroke: c, 'stroke-width': '1.2'
+    }));
+  }
+</script>
+
+</body>
+</html>
